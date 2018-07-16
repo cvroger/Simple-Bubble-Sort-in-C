@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void swapit(int *,int *);
+void bubblesort(int[], int);
+
+int main()
+{
+    int total, i;
+    printf("How many numbers are there? ");
+    scanf("%d", &total);
+    int basket[total];
+    for(i=0; i<total; i++)
+    {
+        printf("\nInput item %d: ", i+1);
+        scanf("%d", &basket[i]);
+    }
+    printf("\nNow your basket is:\n");
+    for (i=0; i<total; i++)
+    {
+        printf("%8d", basket[i]);
+    }
+    printf("\n\nReady to carry out sorting!\n");
+    system("pause");
+
+    bubblesort(basket, total);
+    printf("\nNow your basket is:\n");
+    for (i=0; i<total; i++)
+    {
+        printf("%8d", basket[i]);
+    }
+}
+
+void bubblesort(int array[], int totalcount)
+{
+    int outerloop, innerloop;
+    for (outerloop=0; outerloop < totalcount-1; outerloop++ )
+    {
+        for (innerloop=0; innerloop<totalcount-outerloop-1; innerloop++)
+        {
+            if (array[innerloop] > array[innerloop+1])
+            {
+                swapit(&array[innerloop], &array[innerloop+1]);
+            }
+        }
+    }
+}
+
+void swapit (int *p, int *q)
+{
+    int temp;
+    temp = *p;
+    *p = *q;
+    *q = temp;
+}
